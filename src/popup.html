@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>SaidNo</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <strong>SaidNo</strong>
+      <span id="site"></span>
+    </header>
+
+    <section id="status"></section>
+
+    <section id="tracking" hidden>
+      <h2 id="tracking-title"></h2>
+      <ul id="tracker-list"></ul>
+      <p class="note">
+        Requests alone can be harmless (some tools send cookieless pings after a refusal). A tracker setting cookies after
+        you declined is the stronger sign your choice was ignored.
+      </p>
+    </section>
+
+    <section class="controls">
+      <label><input type="checkbox" id="pause" /> Pause on this site</label>
+      <details>
+        <summary>Settings</summary>
+        <label><input type="checkbox" data-setting="decline" /> Decline cookie popups</label>
+        <label><input type="checkbox" data-setting="cleanup" /> Fix pages after declining</label>
+        <label><input type="checkbox" data-setting="detect" /> Detect tracking after declining</label>
+        <p class="note">Everything stays on this device. SaidNo makes no network requests of its own.</p>
+      </details>
+    </section>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

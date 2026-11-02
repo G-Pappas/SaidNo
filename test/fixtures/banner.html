@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Fixture: hostile cookie banner</title>
+    <style>
+      html, body { overflow: hidden; } /* scroll lock */
+      main { height: 4000px; }
+      #backdrop { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); z-index: 10; }
+      #banner { position: fixed; bottom: 0; left: 0; right: 0; padding: 20px; background: #fff; z-index: 11; }
+    </style>
+  </head>
+  <body>
+    <main><h1>Article</h1><p>Some content the reader wants to scroll through.</p></main>
+    <div id="backdrop"></div>
+    <div id="banner" role="dialog" aria-label="Cookie consent">
+      <p>We and our 842 partners use cookies to personalise ads and measure performance. Do you accept?</p>
+      <button id="accept">Accept all</button>
+      <button id="reject">Reject all</button>
+    </div>
+    <script>
+      // The hostile part: rejecting removes the banner but leaves the page locked
+      // and dark, and the site keeps calling a tracker regardless of the answer.
+      document.getElementById('reject').onclick = () => document.getElementById('banner').remove();
+      document.getElementById('accept').onclick = () => {
+        document.getElementById('banner').remove();
+        document.getElementById('backdrop').remove();
+        document.documentElement.style.overflow = document.body.style.overflow = 'auto';
+      };
+      setTimeout(() => {
+        const port = new URLSearchParams(location.search).get('tracker');
+        new Image().src = `https://www.google-analytics.com:${port}/collect?v=1`;
+      }, 9000);
+    </script>
+  </body>
+</html>
