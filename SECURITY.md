@@ -22,4 +22,4 @@ SaidNo can read every page you visit. That makes the extension itself the most d
 
 ## Reporting a vulnerability
 
-Please don't open a public issue. Email the maintainers (address to be added before release) with steps to reproduce. You'll get a reply within a week.
+Please don't open a public issue. Email xgpappas@outlook.com with steps to reproduce. You'll get a reply within a week.
